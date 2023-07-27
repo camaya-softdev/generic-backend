@@ -1,7 +1,7 @@
 version: "3.8"
 
 networks:
-  generic-network:
+  generic-database_generic-network:
     external: true
 
 services:
@@ -17,8 +17,9 @@ services:
       - ./app/generic-back:/var/www/html:delegated
     restart: unless-stopped
     networks:
-      generic-network:
+      generic-database_generic-network:
         ipv4_address: 172.21.0.5
+        
   web-server:
     container_name: generic-nginx
     build:
@@ -37,5 +38,5 @@ services:
 
     restart: unless-stopped
     networks:
-      generic-network:
+      generic-database_generic-network:
         ipv4_address: 172.21.0.6 
